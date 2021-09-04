@@ -2,14 +2,12 @@ const mongoose = require('mongoose');
 const app = require('./app');
 const config = require('./config/config');
 const logger = require('./config/logger');
-const Url = require('url');
 
 let server;
-const urls = Url(config.mongoose.url);
-mongoose.connect(urls, config.mongoose.options).then(() => {
+mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
   logger.info('Connected to MongoDB');
-  server = app.listen(config.port, () => {
-    logger.info(`Listening to port ${config.port}`);
+  server = app.listen(config.port || 8080, () => {
+    logger.info(`Listening to port ${config.port || 8080}`);
   });
 });
 
