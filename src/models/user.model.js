@@ -2,11 +2,16 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const { toJSON, paginate } = require('./plugins');
-const { roles } = require('../config/roles');
+// const { roles } = require('../config/roles');
 
 const userSchema = mongoose.Schema(
   {
-    name: {
+    fistName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    lastName: {
       type: String,
       required: true,
       trim: true,
@@ -35,10 +40,42 @@ const userSchema = mongoose.Schema(
       },
       private: true, // used by the toJSON plugin
     },
-    role: {
+    // typeId: {
+    //   type: String,
+    //   require: true,
+    //   trim: true,
+    // },
+    location: {
       type: String,
-      enum: roles,
-      default: 'user',
+      require: true,
+      trim: true,
+      minlength: 0,
+      maxLength: 150,
+    },
+    phoneNumber: {
+      type: String,
+      require: true,
+      trim: true,
+      minlength: 0,
+      maxLength: 15,
+    },
+    frontCard: {
+      type: String,
+      require: true,
+      trim: true,
+      minlength: 0,
+      maxLength: 15,
+    },
+    backCard: {
+      type: String,
+      require: true,
+      trim: true,
+      minlength: 0,
+      maxLength: 15,
+    },
+    agree: {
+      type: Boolean,
+      require: true,
     },
     isEmailVerified: {
       type: Boolean,
