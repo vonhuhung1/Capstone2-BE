@@ -38,7 +38,7 @@ const userSchema = mongoose.Schema(
           throw new Error('Password must contain at least one letter and one number');
         }
       },
-      private: true, // used by the toJSON plugin
+      private: true,
     },
     // typeId: {
     //   type: String,
@@ -64,14 +64,14 @@ const userSchema = mongoose.Schema(
       require: true,
       trim: true,
       minlength: 0,
-      maxLength: 15,
+      maxLength: 150,
     },
     backCard: {
       type: String,
       require: true,
       trim: true,
       minlength: 0,
-      maxLength: 15,
+      maxLength: 150,
     },
     agree: {
       type: Boolean,
