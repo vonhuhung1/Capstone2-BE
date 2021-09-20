@@ -3,9 +3,16 @@ const { password, objectId } = require('./custom.validation');
 
 const createUser = {
   body: Joi.object().keys({
+    fistName: Joi.string().min(0).max(25).required(),
+    lastName: Joi.string().min(0).max(25).required(),
     email: Joi.string().required().email(),
-    password: Joi.string().required().custom(password),
-    name: Joi.string().required(),
+    password: Joi.string().min(0).max(150).required().custom(password),
+    typeId: Joi.string().custom(objectId),
+    location: Joi.string().min(0).max(150),
+    phoneNumber: Joi.string().min(0).max(15).required(),
+    frontCard: Joi.string().min(0).max(150).required(),
+    backCard: Joi.string().min(0).max(150).required(),
+    agree: Joi.boolean().required(),
     role: Joi.string().required().valid('user', 'admin'),
   }),
 };
@@ -32,9 +39,17 @@ const updateUser = {
   }),
   body: Joi.object()
     .keys({
-      email: Joi.string().email(),
-      password: Joi.string().custom(password),
-      name: Joi.string(),
+      fistName: Joi.string().min(0).max(25).required(),
+      lastName: Joi.string().min(0).max(25).required(),
+      email: Joi.string().required().email(),
+      password: Joi.string().min(0).max(150).required().custom(password),
+      typeId: Joi.string().custom(objectId),
+      location: Joi.string().min(0).max(150),
+      phoneNumber: Joi.string().min(0).max(15).required(),
+      frontCard: Joi.string().min(0).max(150).required(),
+      backCard: Joi.string().min(0).max(150).required(),
+      agree: Joi.boolean().required(),
+      role: Joi.string().required().valid('user', 'admin'),
     })
     .min(1),
 };

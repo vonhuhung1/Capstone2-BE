@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const { toJSON, paginate } = require('./plugins');
-// const { roles } = require('../config/roles');
+const { roles } = require('../config/roles');
 
 const userSchema = mongoose.Schema(
   {
@@ -40,11 +40,11 @@ const userSchema = mongoose.Schema(
       },
       private: true,
     },
-    // typeId: {
-    //   type: String,
-    //   require: true,
-    //   trim: true,
-    // },
+    typeId: {
+      type: String,
+      require: true,
+      trim: true,
+    },
     location: {
       type: String,
       require: true,
@@ -76,6 +76,11 @@ const userSchema = mongoose.Schema(
     agree: {
       type: Boolean,
       require: true,
+    },
+    role: {
+      type: String,
+      enum: roles,
+      default: 'user',
     },
     isEmailVerified: {
       type: Boolean,
