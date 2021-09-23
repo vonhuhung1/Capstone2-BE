@@ -10,6 +10,9 @@
       .wrapper-container img {
         display: flex;
         margin: auto;
+        width: 40px;
+        aspect-ratio: 80/40;
+        object-fit: cover;
       }
       
       .wrapper-container .wrapper-header {
@@ -20,11 +23,26 @@
         width: 725px;
         display: block;
         margin: auto;
-        margin-top: 24px;
       
         box-sizing: border-box;
         border: 1px solid #DCDCDC;
-        border-radius: 8px;
+        border-radius: 0 0 8px 8px;
+      }
+
+      .wrapper-container .title-content {
+        width: 725px;
+        margin: auto;
+        background-color: rgba(189, 226, 204, 1);
+        margin-top: 24px;
+        border-radius: 8px 8px 0 0;
+      }
+
+      .wrapper-container .title-content h1 {
+        font-family: "Inter";
+        font-style: normal;
+        margin: 0;
+        padding: 30px 24px;
+        color: #000 !important;
       }
 
       .wrapper-container .wrapper-content .space-content {
@@ -36,10 +54,19 @@
         font-style: normal;
         font-size: 16px;
         line-height: 24px;
+        color: #000 !important;
+      }
+
+      .wrapper-container .wrapper-content .space-content h1 {
+        font-family: "Inter";
+        font-style: normal;
+        text-align: center;
+        color: #000 !important;
       }
 
       .code-content {
         display: flex;
+        margin-bottom: 24px;
       }
 
       .code-content p {
@@ -49,14 +76,16 @@
 
       .code-content .code{
         width: 75px;
-        margin-left: 10px;
-        background-color: #DCDCDC;
-        border-radius: 8px;
+        margin-left: 5px;
       }
 
       .code-content .code p {
         text-align: center;
         font-weight: 600;
+      }
+
+      hr {
+        background: #DCDCDC;
       }
 
     </style>
@@ -66,23 +95,17 @@
       <div class="wrapper-header">
         <img src="https://res.cloudinary.com/cloundmedicalschedule/image/upload/v1632310079/icon_hafmug.png">
       </div>
+      <div class="title-content">
+        <h1>Silent Hero App Verification Code</h1>
+      </div>
       <div class="wrapper-content">
         <div class="space-content">
-          <p>Please use the following security code for the "Silent Hero App" account  <%= name %></p>
-          <div class="code-content">
-            <p>Security code:</p> 
-            <div class="code">
-              <p>
-                <%= code%>
-              </p>
-            </div>
-          </div>
-          <P>
-            If you don't recognize the  "Silent Hero App" account <%= name %>, you can click here to remove your email address from that account.
-          </P>
+          <p>Dear Silent Hero App User</p>
+          <p>Please use the following security code for the "Silent Hero App" account  <%= name %> through your email address, Your  "Silent Hero App" verification code is:</p>
+          <h1><%= code%></h1>
           <hr />
           <p>Thanks,</p>
-          <P>The Medical Schedule account team<P>
+          <P>The Silent Hero App account team<P>
         </div>
       </div>
     </div>

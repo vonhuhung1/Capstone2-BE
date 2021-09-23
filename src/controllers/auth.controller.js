@@ -42,6 +42,7 @@ const sendVerificationEmail = catchAsync(async (req, res) => {
   await emailService.sendVerificationEmail(email, code);
   res.status(httpStatus.OK).send({
     code,
+    timeSecond: 90,
   });
 });
 
