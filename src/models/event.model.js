@@ -8,14 +8,14 @@ const eventSchema = mongoose.Schema(
       required: true,
       trim: true,
       minLength: 0,
-      maxLength: 20,
+      maxLength: 50,
     },
     content: {
       type: String,
       required: true,
       trim: true,
       minLength: 0,
-      maxLength: 200,
+      maxLength: 250,
     },
     status: {
       type: Boolean,
@@ -26,7 +26,7 @@ const eventSchema = mongoose.Schema(
       required: true,
       trim: true,
       minLength: 0,
-      maxLength: 200,
+      maxLength: 100,
     },
     authorId: {
       type: mongoose.Schema.ObjectId,
@@ -39,12 +39,6 @@ const eventSchema = mongoose.Schema(
       require: true,
       trim: true,
       ref: 'GiveList',
-    },
-    comment: {
-      type: mongoose.Schema.ObjectId,
-      require: true,
-      trim: true,
-      ref: 'CommentList',
     },
   },
   {

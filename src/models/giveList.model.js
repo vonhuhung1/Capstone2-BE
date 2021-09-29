@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
 
-const postSchema = mongoose.Schema(
+const giveListSchema = mongoose.Schema(
   {
     commentId: {
       type: [
@@ -19,9 +19,9 @@ const postSchema = mongoose.Schema(
 );
 
 // add plugin that converts mongoose to json
-postSchema.plugin(toJSON);
-postSchema.plugin(paginate);
+giveListSchema.plugin(toJSON);
+giveListSchema.plugin(paginate);
 
-const Post = mongoose.model('Post', postSchema);
+const GiveList = mongoose.model('GiveList', giveListSchema);
 
-module.exports = Post;
+module.exports = GiveList;
