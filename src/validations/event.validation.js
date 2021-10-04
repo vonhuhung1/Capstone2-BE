@@ -7,8 +7,8 @@ const createEvent = {
     content: Joi.string().min(0).max(250).required(),
     status: Joi.boolean().required(),
     address: Joi.string().min(0).max(100).required(),
-    authorId: Joi.string().custom(objectId).require(),
-    giveList: Joi.string().custom(objectId).require(),
+    authorId: Joi.string().custom(objectId).required(),
+    // giveList: Joi.string().custom(objectId).required(),
     startEvent: Joi.date().required(),
     endEvent: Joi.date().required(),
   }),
@@ -32,7 +32,7 @@ const getEvent = {
 
 const updateEvent = {
   params: Joi.object().keys({
-    userId: Joi.required().custom(objectId),
+    eventId: Joi.required().custom(objectId),
   }),
   body: Joi.object()
     .keys({
@@ -40,8 +40,8 @@ const updateEvent = {
       content: Joi.string().min(0).max(250).required(),
       status: Joi.boolean().required(),
       address: Joi.string().min(0).max(100).required(),
-      authorId: Joi.string().custom(objectId).require(),
-      giveList: Joi.string().custom(objectId).require(),
+      authorId: Joi.string().custom(objectId).required(),
+      // giveList: Joi.string().custom(objectId).required(),
       startEvent: Joi.date().required(),
       endEvent: Joi.date().required(),
     })
@@ -50,7 +50,7 @@ const updateEvent = {
 
 const deleteEvent = {
   params: Joi.object().keys({
-    userId: Joi.string().custom(objectId),
+    eventId: Joi.string().custom(objectId),
   }),
 };
 
