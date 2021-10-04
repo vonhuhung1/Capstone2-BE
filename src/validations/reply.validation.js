@@ -4,8 +4,8 @@ const { objectId } = require('./custom.validation');
 const createReplyComment = {
   body: Joi.object().keys({
     content: Joi.string().min(0).max(250).required(),
-    authorId: Joi.string().custom(objectId).require(),
-    replyId: Joi.string().custom(objectId).require(),
+    authorId: Joi.string().custom(objectId).required(),
+    replyId: Joi.string().custom(objectId).required(),
   }),
 };
 
@@ -33,8 +33,8 @@ const updateReplyComment = {
     .keys({
       content: Joi.string().min(0).max(250).required(),
       address: Joi.string().min(0).max(100).required(),
-      authorId: Joi.string().custom(objectId).require(),
-      replyId: Joi.string().custom(objectId).require(),
+      authorId: Joi.string().custom(objectId).required(),
+      replyId: Joi.string().custom(objectId).required(),
     })
     .min(1),
 };

@@ -19,7 +19,7 @@ const getEvents = catchAsync(async (req, res) => {
 const getEvent = catchAsync(async (req, res) => {
   const event = await eventService.getEventById(req.params.eventId);
   if (!event) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+    throw new ApiError(httpStatus.NOT_FOUND, 'Event not found');
   }
   res.status(httpStatus.OK).send(event);
 });

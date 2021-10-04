@@ -5,4 +5,4 @@ module.exports.Event = require('./event.model');
 module.exports.CommentList = require('./commentList.model');
 module.exports.GiveList = require('./giveList.model');
 module.exports.Comment = require('./comment.model');
-module.exports.Give = require('./event.model');
+module.exports.Give = require('./give.model');
