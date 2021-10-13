@@ -34,18 +34,18 @@ const postSchema = mongoose.Schema(
       trim: true,
       ref: 'User',
     },
-    // give: {
-    //   type: mongoose.Schema.ObjectId,
-    //   require: true,
-    //   trim: true,
-    //   ref: 'GiveList',
-    // },
-    // comment: {
-    //   type: mongoose.Schema.ObjectId,
-    //   require: true,
-    //   trim: true,
-    //   ref: 'CommentList',
-    // },
+     give: {
+       type: mongoose.Schema.ObjectId,
+       require: true,
+       trim: true,
+       ref: 'GiveList',
+     },
+     comment: {
+       type: mongoose.Schema.ObjectId,
+       require: true,
+       trim: true,
+       ref: 'CommentList',
+     },
   },
   {
     timestamps: true,

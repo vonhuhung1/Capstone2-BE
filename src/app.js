@@ -57,7 +57,7 @@ if (config.env === 'production') {
 }
 
 // v1 api routes
-app.use('/', publicRoutes);
+// app.use('/', publicRoutes);
 app.use('/api', routes);
 
 // send back a 404 error for any unknown api request
