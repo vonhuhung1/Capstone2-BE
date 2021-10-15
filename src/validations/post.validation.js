@@ -1,6 +1,7 @@
 const Joi = require('joi');
 const { objectId } = require('./custom.validation');
 
+// to do fix validation field create
 const createPost = {
   body: Joi.object().keys({
     title: Joi.string().min(0).max(50).required(),
@@ -27,13 +28,13 @@ const getPosts = {
 
 const getPost = {
   params: Joi.object().keys({
-    eventId: Joi.string().custom(objectId),
+    postId: Joi.string().custom(objectId),
   }),
 };
 
 const updatePost = {
   params: Joi.object().keys({
-    userId: Joi.required().custom(objectId),
+    postId: Joi.required().custom(objectId),
   }),
   body: Joi.object()
     .keys({
@@ -51,7 +52,7 @@ const updatePost = {
 
 const deletePost = {
   params: Joi.object().keys({
-    userId: Joi.string().custom(objectId),
+    postId: Joi.string().custom(objectId),
   }),
 };
 
