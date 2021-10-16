@@ -7,7 +7,7 @@ const giveListSchema = mongoose.Schema(
       type: [
         {
           type: mongoose.Schema.ObjectId,
-          ref: 'Comment',
+          ref: 'Give',
         },
       ],
       default: [],

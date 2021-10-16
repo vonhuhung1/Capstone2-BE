@@ -8,7 +8,7 @@ const createEvent = {
     status: Joi.boolean().required(),
     address: Joi.string().min(0).max(100).required(),
     authorId: Joi.string().custom(objectId).required(),
-    // giveList: Joi.string().custom(objectId).required(),
+    giveList: Joi.string().custom(objectId).required(),
     startEvent: Joi.date().required(),
     endEvent: Joi.date().required(),
   }),
@@ -41,7 +41,7 @@ const updateEvent = {
       status: Joi.boolean().required(),
       address: Joi.string().min(0).max(100).required(),
       authorId: Joi.string().custom(objectId).required(),
-      // giveList: Joi.string().custom(objectId).required(),
+      giveList: Joi.string().custom(objectId).required(),
       startEvent: Joi.date().required(),
       endEvent: Joi.date().required(),
     })
