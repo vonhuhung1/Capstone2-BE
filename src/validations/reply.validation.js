@@ -5,6 +5,7 @@ const createReplyComment = {
   body: Joi.object().keys({
     content: Joi.string().min(0).max(250).required(),
     authorId: Joi.string().custom(objectId).required(),
+    status: Joi.boolean().required(),
     replyId: Joi.string().custom(objectId).required(),
   }),
 };
