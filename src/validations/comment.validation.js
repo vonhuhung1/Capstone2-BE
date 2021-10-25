@@ -4,6 +4,7 @@ const { objectId } = require('./custom.validation');
 const createComment = {
   body: Joi.object().keys({
     content: Joi.string().min(0).max(250).required(),
+    status: Joi.boolean().required(),
     authorId: Joi.string().custom(objectId).required(),
     replyId: Joi.string().custom(objectId).required(),
   }),

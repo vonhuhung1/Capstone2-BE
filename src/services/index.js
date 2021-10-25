@@ -5,3 +5,5 @@ module.exports.userService = require('./user.service');
 module.exports.eventService = require('./event.service');
 module.exports.postService = require('./post.service');
 module.exports.giveService = require('./give.service');
+module.exports.commentService = require('./comment.service');
+module.exports.replyService = require('./reply.service');

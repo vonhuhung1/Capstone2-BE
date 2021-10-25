@@ -47,7 +47,8 @@ const updatePostById = async (postId, updateBody) => {
     throw new ApiError(httpStatus.NOT_FOUND, 'Post not found');
   }
   Object.assign(post, updateBody);
-  return post.save();
+  await post.save();
+  return post;
 };
 
 /**
@@ -60,7 +61,8 @@ const deletePostById = async (userId) => {
   if (!post) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Post not found');
   }
-  return post.remove();
+  await post.remove();
+  return post;
 };
 
 module.exports = {

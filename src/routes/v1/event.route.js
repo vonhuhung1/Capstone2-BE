@@ -14,7 +14,7 @@ router
 router
   .route('/:eventId')
   .get(auth('user'), validate(eventValidation.getEvent), eventController.getEvent)
-  .patch(auth('user'), validate(eventValidation.updateUser), eventController.updateEvent)
-  .delete(auth('user'), validate(eventValidation.deleteUser), eventController.deleteEvent);
+  .patch(auth('user'), validate(eventValidation.updateEvent), eventController.updateEvent)
+  .delete(auth('user'), validate(eventValidation.deleteEvent), eventController.deleteEvent);
 
 module.exports = router;
