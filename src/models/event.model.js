@@ -34,6 +34,9 @@ const eventSchema = mongoose.Schema(
       trim: true,
       ref: 'User',
     },
+    slice: {
+      type: [{ index: Number, path: String }],
+    },
     give: {
       type: mongoose.Schema.ObjectId,
       require: true,

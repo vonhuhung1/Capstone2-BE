@@ -40,6 +40,9 @@ const postSchema = mongoose.Schema(
       trim: true,
       ref: 'GiveList',
     },
+    slice: {
+      type: [{ index: Number, path: String }],
+    },
     comment: {
       type: mongoose.Schema.ObjectId,
       require: true,
