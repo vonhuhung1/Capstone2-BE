@@ -6,4 +6,4 @@ module.exports.CommentList = require('./commentList.model');
 module.exports.GiveList = require('./giveList.model');
 module.exports.Comment = require('./comment.model');
 module.exports.Give = require('./give.model');
-module.exports.replyComment = require('./reply.model');
+module.exports.ReplyComment = require('./reply.model');

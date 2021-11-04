@@ -7,15 +7,14 @@ const replyController = require('../../controllers/reply.controller');
 const router = express.Router();
 
 router
- .route('/')
- .post(auth('user'), validate(replyValidation.createReplyComment), replyController.createReplyComment)
- .get(auth('user'), validate(replyValidation.getReplyComments), replyController.getReplyComments);
+  .route('/')
+  .post(auth('user'), validate(replyValidation.createReplyComment), replyController.createReplyComment)
+  .get(auth('user'), validate(replyValidation.getReplyComments), replyController.getReplyComments);
 
- router
- .route('/:replyId')
- .get(auth('user'), validate(replyValidation.getReplyComment), replyController.getReplyComment)
- .patch(auth('user'), validate(replyValidation.updateReplyComment), replyController.updateReplyComment)
- .delete(auth('user'), validate(replyValidation.deleteReplyComment), replyController.deleteReplyComment);
+router
+  .route('/:replyId')
+  .get(auth('user'), validate(replyValidation.getReplyComment), replyController.getReplyComment)
+  .patch(auth('user'), validate(replyValidation.updateReplyComment), replyController.updateReplyComment)
+  .delete(auth('user'), validate(replyValidation.deleteReplyComment), replyController.deleteReplyComment);
 
 module.exports = router;
-

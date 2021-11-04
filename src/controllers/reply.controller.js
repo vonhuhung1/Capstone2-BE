@@ -35,7 +35,7 @@ const deleteReplyComment = catchAsync(async (req, res) => {
 });
 
 module.exports = {
-  createReplyComment,    
+  createReplyComment,
   getReplyComments,
   getReplyComment,
   updateReplyComment,

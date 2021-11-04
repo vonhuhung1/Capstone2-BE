@@ -15,17 +15,11 @@ const login = catchAsync(async (req, res) => {
   res.send({ user, tokens });
 });
 
-const loginGoogle = catchAsync(async (req, res) => {
+// const loginGoogle = catchAsync(async (req, res) => { });
 
-})
+// const loginMeta = catchAsync(async (req, res) => { });
 
-const loginMeta = catchAsync(async (req, res) => {
-
-})
-
-const loginZalo = catchAsync(async (req, res) => {
-
-})
+// const loginZalo = catchAsync(async (req, res) => { });
 
 const logout = catchAsync(async (req, res) => {
   await authService.logout(req.body.refreshToken);
@@ -66,9 +60,9 @@ const verifyEmail = catchAsync(async (req, res) => {
 module.exports = {
   register,
   login,
-  loginGoogle,
-  loginMeta,
-  loginZalo,
+  // loginGoogle,
+  // loginMeta,
+  // loginZalo,
   logout,
   refreshTokens,
   forgotPassword,
