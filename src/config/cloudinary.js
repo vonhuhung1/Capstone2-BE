@@ -29,7 +29,7 @@ const assignCloudinary = async (req, res, next) => {
       const resolve = await Promise.all(urls);
       req.body[key] = resolve.length - 1 > 0 ? resolve : resolve[0].path;
       if (indexKey === numberLimit - 1) {
-        next();
+        next(); 
       }
     });
   } catch (error) {

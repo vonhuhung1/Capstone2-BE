@@ -9,7 +9,8 @@ const createPost = {
     status: Joi.boolean().required(),
     address: Joi.string().min(0).max(100).required(),
     authorId: Joi.string().custom(objectId).required(),
-    comment: Joi.string().custom(objectId).required(),
+    comment: Joi.string().custom(objectId),
+    slice: Joi.array().required(),
     giveList: Joi.string().custom(objectId).required(),
     startEvent: Joi.date().required(),
     endEvent: Joi.date().required(),
@@ -38,14 +39,15 @@ const updatePost = {
   }),
   body: Joi.object()
     .keys({
-      title: Joi.string().min(0).max(50).required(),
-      content: Joi.string().min(0).max(250).required(),
-      status: Joi.boolean().required(),
-      address: Joi.string().min(0).max(100).required(),
-      authorId: Joi.string().custom(objectId).required(),
-      giveList: Joi.string().custom(objectId).required(),
-      startEvent: Joi.date().required(),
-      endEvent: Joi.date().required(),
+      title: Joi.string().min(0).max(50),
+      content: Joi.string().min(0).max(250),
+      status: Joi.boolean(),
+      address: Joi.string().min(0).max(100),
+      authorId: Joi.string().custom(objectId),
+      slice: Joi.array(),
+      giveList: Joi.string().custom(objectId),
+      startEvent: Joi.date(),
+      endEvent: Joi.date(),
     })
     .min(1),
 };

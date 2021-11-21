@@ -39,17 +39,17 @@ const updateUser = {
   }),
   body: Joi.object()
     .keys({
-      fistName: Joi.string().min(0).max(25).required(),
-      lastName: Joi.string().min(0).max(25).required(),
-      email: Joi.string().required().email(),
-      password: Joi.string().min(0).max(150).required().custom(password),
+      fistName: Joi.string().min(0).max(25),
+      lastName: Joi.string().min(0).max(25),
+      email: Joi.string().email(),
+      password: Joi.string().min(0).max(150).custom(password),
       typeId: Joi.string().custom(objectId),
       location: Joi.string().min(0).max(150),
-      phoneNumber: Joi.string().min(0).max(15).required(),
-      frontCard: Joi.string().min(0).max(150).required(),
-      backCard: Joi.string().min(0).max(150).required(),
-      agree: Joi.boolean().required(),
-      role: Joi.string().required().valid('user', 'admin'),
+      phoneNumber: Joi.string().min(0).max(15),
+      frontCard: Joi.string().min(0).max(150),
+      backCard: Joi.string().min(0).max(150),
+      agree: Joi.boolean(),
+      role: Joi.string().valid('user', 'admin'),
     })
     .min(1),
 };
@@ -64,6 +64,6 @@ module.exports = {
   createUser,
   getUsers,
   getUser,
-  updateUser,
+    updateUser,
   deleteUser,
 };

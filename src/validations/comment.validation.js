@@ -32,9 +32,9 @@ const updateComment = {
   }),
   body: Joi.object()
     .keys({
-      content: Joi.string().min(0).max(250).required(),
-      authorId: Joi.string().custom(objectId).required(),
-      replyId: Joi.string().custom(objectId).required(),
+      content: Joi.string().min(0).max(250),
+      authorId: Joi.string().custom(objectId),
+      replyId: Joi.string().custom(objectId),
     })
     .min(1),
 };
