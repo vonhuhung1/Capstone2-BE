@@ -8,6 +8,8 @@ const register = {
     email: Joi.string().required().email(),
     password: Joi.string().min(0).max(150).required().custom(password),
     typeId: Joi.string().custom(objectId),
+    lat: Joi.string().min(0).max(150),
+    lng: Joi.string().min(0).max(150),
     location: Joi.string().min(0).max(150),
     phoneNumber: Joi.string().min(0).max(15).required(),
     frontCard: Joi.string().min(0).max(150).required(),

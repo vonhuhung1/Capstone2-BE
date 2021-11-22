@@ -45,9 +45,20 @@ const userSchema = mongoose.Schema(
       require: true,
       trim: true,
     },
+    lat: {
+      type: String,
+      trim: true,
+      minlength: 0,
+      maxLength: 150,
+    },
+    lng: {
+      type: String,
+      trim: true,
+      minlength: 0,
+      maxLength: 150,
+    },
     location: {
       type: String,
-      require: true,
       trim: true,
       minlength: 0,
       maxLength: 150,
