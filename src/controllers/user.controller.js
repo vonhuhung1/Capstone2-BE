@@ -1,5 +1,7 @@
 const httpStatus = require('http-status');
 const pick = require('../utils/pick');
+const pickSearch = require('../utils/pickSearch');
+const pickAnd = require('../utils/pickAnd');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
 const { userService } = require('../services');
@@ -10,7 +12,16 @@ const createUser = catchAsync(async (req, res) => {
 });
 
 const getUsers = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['name', 'role']);
+  const filter = req.query.exec
+    ? pick(req.query, ['role', 'location', 'fistName'])
+    : pickSearch(req.query, ['location', 'fistName']);
+  const options = pick(req.query, ['sortBy', 'limit', 'page']);
+  const result = await userService.queryUsers(filter, options);
+  res.status(httpStatus.OK).send(result);
+});
+
+const getLocationRadius = catchAsync(async (req, res) => {
+  const filter = pickAnd(req.query, ['lat', 'lng', 'location']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
   const result = await userService.queryUsers(filter, options);
   res.status(httpStatus.OK).send(result);
@@ -40,4 +51,5 @@ module.exports = {
   getUser,
   updateUser,
   deleteUser,
+  getLocationRadius,
 };
