@@ -18,17 +18,17 @@ const uploadCloud = multer({
 
 const assignCloudinary = async (req, res, next) => {
   try {
-    const { files } = req;
-    if (Object.keys(files).length > 0) {
-      const numberLimit = Object.keys(files).length;
-      await Object.keys(files).map(async (key, indexKey) => {
+    const { files, body } = req;
+    const numberFiles = Object.keys(body).length + Object.keys(files).length;
+    if (numberFiles > 0) {
+      Object.keys(files).map(async (key) => {
         const urls = files[key].map(async (urlElement, index) => {
           const currentElement = await cloudinary.uploader.upload(urlElement.path);
           return { index: index + 1, path: currentElement.url };
         });
-        const resolve = await Promise.all(urls);
-        req.body[key] = resolve.length - 1 > 0 ? resolve : resolve[0].path;
-        if (indexKey === numberLimit - 1) {
+        const result = await Promise.all(urls);
+        req.body = { ...req.body, [key]: result.length === 1 ? result[0].path : result };
+        if (numberFiles === Object.keys(req.body).length) {
           next();
         }
       });
