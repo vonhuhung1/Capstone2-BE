@@ -12,6 +12,7 @@ router.post(
   uploadCloud.fields([
     { name: 'frontCard', maxCount: 1 },
     { name: 'backCard', maxCount: 1 },
+    { name: 'image',maxCount: 1 },
   ]),
   assignCloudinary,
   validate(authValidation.register),

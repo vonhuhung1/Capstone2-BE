@@ -13,7 +13,7 @@ const createUser = {
     frontCard: Joi.string().min(0).max(150).required(),
     backCard: Joi.string().min(0).max(150).required(),
     agree: Joi.boolean().required(),
-    role: Joi.string().required().valid('user', 'admin'),
+    role: Joi.string().required().valid('Give', 'Received'),
   }),
 };
 
@@ -49,7 +49,7 @@ const updateUser = {
       frontCard: Joi.string().min(0).max(150),
       backCard: Joi.string().min(0).max(150),
       agree: Joi.boolean(),
-      role: Joi.string().valid('user', 'admin'),
+      role: Joi.string().valid('Give', 'Received'),
     })
     .min(1),
 };

@@ -34,7 +34,7 @@ const eventSchema = mongoose.Schema(
       trim: true,
       ref: 'User',
     },
-    slice: {
+    image: {
       type: [{ index: Number, path: String }],
     },
     give: {
