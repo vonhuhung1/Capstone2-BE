@@ -12,8 +12,9 @@ const createUser = {
     phoneNumber: Joi.string().min(0).max(15).required(),
     frontCard: Joi.string().min(0).max(150).required(),
     backCard: Joi.string().min(0).max(150).required(),
+    avatar: Joi.string().min(0).max(150).required(),
     agree: Joi.boolean().required(),
-    role: Joi.string().required().valid('Give', 'Received'),
+    role: Joi.string().required().valid('user', 'admin'),
   }),
 };
 
@@ -48,8 +49,10 @@ const updateUser = {
       phoneNumber: Joi.string().min(0).max(15),
       frontCard: Joi.string().min(0).max(150),
       backCard: Joi.string().min(0).max(150),
+      avatar: Joi.string().min(0).max(150),
       agree: Joi.boolean(),
-      role: Joi.string().valid('Give', 'Received'),
+      role: Joi.string().valid('user', 'admin'),
+      classify: Joi.string().valid('Giver', 'Receiver'),
     })
     .min(1),
 };

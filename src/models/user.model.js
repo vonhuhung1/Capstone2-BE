@@ -73,6 +73,13 @@ const userSchema = mongoose.Schema(
       minlength: 0,
       maxLength: 150,
     },
+    avatar: {
+      type: String,
+      require: true,
+      trim: true,
+      minlength: 0,
+      maxLength: 150,
+    },
     auth: {
       type: String,
       require: true,
@@ -87,7 +94,7 @@ const userSchema = mongoose.Schema(
     role: {
       type: String,
       enum: roles,
-      default: 'Received',
+      default: 'user',
     },
     isEmailVerified: {
       type: Boolean,
