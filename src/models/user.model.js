@@ -84,6 +84,20 @@ const userSchema = mongoose.Schema(
       minlength: 0,
       maxLength: 150,
     },
+    avatar: {
+      type: String,
+      require: true,
+      trim: true,
+      minlength: 0,
+      maxLength: 150,
+    },
+    auth: {
+      type: String,
+      require: true,
+      trim: true,
+      minlength: 0,
+      maxLength: 150,
+    },
     agree: {
       type: Boolean,
       require: true,
