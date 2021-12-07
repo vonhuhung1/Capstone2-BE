@@ -25,7 +25,7 @@ const getEvent = catchAsync(async (req, res) => {
 });
 
 const updateEvent = catchAsync(async (req, res) => {
-  const event = await eventService.updateEventById(req.params.eventId, req.body);
+  const event = await eventService.updateEventById(req.params.eventId, req.body, req.query.imageIndex);
   res.status(httpStatus.OK).send(event);
 });
 

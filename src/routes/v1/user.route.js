@@ -30,7 +30,7 @@ router
     uploadCloud.fields([
       { name: 'frontCard', maxCount: 1 },
       { name: 'backCard', maxCount: 1 },
-      { name: 'avatar', maxCount : 1},
+      { name: 'avatar', maxCount: 1 },
     ]),
     assignCloudinary,
     validate(userValidation.updateUser),

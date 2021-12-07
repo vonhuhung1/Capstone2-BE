@@ -28,20 +28,18 @@ const postSchema = mongoose.Schema(
       minLength: 0,
       maxLength: 200,
     },
+    image: {
+      type: [{ index: Number, path: String }],
+    },
+    quantity: {
+      type: Number,
+      require: true,
+    },
     authorId: {
       type: mongoose.Schema.ObjectId,
       require: true,
       trim: true,
       ref: 'User',
-    },
-    give: {
-      type: mongoose.Schema.ObjectId,
-      require: true,
-      trim: true,
-      ref: 'GiveList',
-    },
-    slice: {
-      type: [{ index: Number, path: String }],
     },
     comment: {
       type: mongoose.Schema.ObjectId,

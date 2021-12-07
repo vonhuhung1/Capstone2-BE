@@ -37,11 +37,19 @@ const eventSchema = mongoose.Schema(
     image: {
       type: [{ index: Number, path: String }],
     },
-    give: {
-      type: mongoose.Schema.ObjectId,
-      require: true,
-      trim: true,
-      ref: 'GiveList',
+    startEvent: {
+      type: Date,
+      default: Date.now(),
+      required: true,
+    },
+    endEvent: {
+      type: Date,
+      default: Date.now(),
+      required: true,
+    },
+    quantity: {
+      type: Number,
+      required: true,
     },
   },
   {

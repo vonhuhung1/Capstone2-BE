@@ -11,7 +11,7 @@ router
   .route('/')
   .post(
     auth('user'),
-    uploadCloud.fields([{ name: 'slice', maxCount: 5 }]),
+    uploadCloud.fields([{ name: 'image', maxCount: 5 }]),
     assignCloudinary,
     validate(postValidation.createPost),
     postController.createPost
@@ -23,7 +23,7 @@ router
   .get(auth('user'), validate(postValidation.getPost), postController.getPost)
   .patch(
     auth('user'),
-    uploadCloud.fields([{ name: 'slice', maxCount: 5 }]),
+    uploadCloud.fields([{ name: 'image', maxCount: 5 }]),
     assignCloudinary,
     validate(postValidation.updatePost),
     postController.updatePost

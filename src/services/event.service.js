@@ -37,13 +37,26 @@ const getEventById = async (id) => {
 /**
  * Update event by id
  * @param {ObjectId} userId
- * @param {Object} updateBody
+ * @param {Any} updateBody
  * @returns {Promise<User>}
  */
 const updateEventById = async (eventId, updateBody) => {
   const event = await getEventById(eventId);
   if (!event) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Event not found');
+  }
+  if (updateBody.image) {
+    updateBody.image.forEach((element) => {
+      const index = event.image.findIndex((image) => Number(image.index) === Number(element.index));
+      if (index >= 0) {
+        // eslint-disable-next-line no-unused-expressions
+        event.image[element.index] === element;
+      } else {
+        event.image = [...event.image, element];
+      }
+    });
+    // eslint-disable-next-line no-param-reassign
+    delete updateBody.image;
   }
   Object.assign(event, updateBody);
   await event.save();

@@ -9,9 +9,9 @@ const createEvent = {
     address: Joi.string().min(0).max(100).required(),
     image: Joi.array().required(),
     authorId: Joi.string().custom(objectId).required(),
-    giveList: Joi.string().custom(objectId).required(),
     startEvent: Joi.date().required(),
     endEvent: Joi.date().required(),
+    quantity: Joi.number().required(),
   }),
 };
 
@@ -35,6 +35,9 @@ const updateEvent = {
   params: Joi.object().keys({
     eventId: Joi.required().custom(objectId),
   }),
+  query: Joi.object().keys({
+    imageIndex: Joi.string(),
+  }),
   body: Joi.object()
     .keys({
       title: Joi.string().min(0).max(50),
@@ -43,9 +46,9 @@ const updateEvent = {
       address: Joi.string().min(0).max(100),
       authorId: Joi.string().custom(objectId),
       image: Joi.array(),
-      giveList: Joi.string().custom(objectId),
       startEvent: Joi.date(),
       endEvent: Joi.date(),
+      quantity: Joi.number(),
     })
     .min(1),
 };

@@ -10,10 +10,9 @@ const createPost = {
     address: Joi.string().min(0).max(100).required(),
     authorId: Joi.string().custom(objectId).required(),
     comment: Joi.string().custom(objectId),
-    slice: Joi.array().required(),
-    giveList: Joi.string().custom(objectId).required(),
-    startEvent: Joi.date().required(),
-    endEvent: Joi.date().required(),
+    image: Joi.array().required(),
+    userId: Joi.array().required(),
+    quantity: Joi.number().required(),
   }),
 };
 
@@ -44,10 +43,10 @@ const updatePost = {
       status: Joi.boolean(),
       address: Joi.string().min(0).max(100),
       authorId: Joi.string().custom(objectId),
-      slice: Joi.array(),
-      giveList: Joi.string().custom(objectId),
-      startEvent: Joi.date(),
-      endEvent: Joi.date(),
+      comment: Joi.string().custom(objectId),
+      image: Joi.array(),
+      userId: Joi.array(),
+      quantity: Joi.number(),
     })
     .min(1),
 };

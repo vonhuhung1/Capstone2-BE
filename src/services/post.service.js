@@ -46,6 +46,19 @@ const updatePostById = async (postId, updateBody) => {
   if (!post) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Post not found');
   }
+  if (updateBody.image) {
+    updateBody.image.forEach((element) => {
+      const index = post.image.findIndex((image) => Number(image.index) === Number(element.index));
+      if (index >= 0) {
+        // eslint-disable-next-line no-unused-expressions
+        post.image[element.index] === element;
+      } else {
+        post.image = [...post.image, element];
+      }
+    });
+    // eslint-disable-next-line no-param-reassign
+    delete updateBody.image;
+  }
   Object.assign(post, updateBody);
   await post.save();
   return post;
