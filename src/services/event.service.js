@@ -49,8 +49,7 @@ const updateEventById = async (eventId, updateBody) => {
     updateBody.image.forEach((element) => {
       const index = event.image.findIndex((image) => Number(image.index) === Number(element.index));
       if (index >= 0) {
-        // eslint-disable-next-line no-unused-expressions
-        event.image[element.index] === element;
+        event.image.splice(index, 1, element);
       } else {
         event.image = [...event.image, element];
       }
