@@ -50,8 +50,7 @@ const updatePostById = async (postId, updateBody) => {
     updateBody.image.forEach((element) => {
       const index = post.image.findIndex((image) => Number(image.index) === Number(element.index));
       if (index >= 0) {
-        // eslint-disable-next-line no-unused-expressions
-        post.image[element.index] === element;
+        post.image.splice(index, 1, element);
       } else {
         post.image = [...post.image, element];
       }

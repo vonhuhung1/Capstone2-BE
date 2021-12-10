@@ -19,6 +19,7 @@ const createPost = {
 const getPosts = {
   query: Joi.object().keys({
     name: Joi.string(),
+    populate: Joi.string(),
     role: Joi.string(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),

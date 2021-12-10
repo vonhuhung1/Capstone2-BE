@@ -19,14 +19,14 @@ const uploadCloud = multer({
 const assignCloudinary = async (req, res, next) => {
   try {
     const { files, body, query } = req;
-    if (Object.keys(files).length > 0) {
-      const indexImage = query.imageIndex.split(',') || null;
+    if (files) {
+      const indexImage = (query.imageIndex && query.imageIndex.split(',')) || null;
       const numberFiles = Object.keys(body).length + Object.keys(files).length;
-      if (files.image.length === indexImage.length) {
+      if (req.method === 'POST' || files.image.length === indexImage.length) {
         Object.keys(files).map(async (key) => {
           const urls = files[key].map(async (urlElement, index) => {
             const currentElement = await cloudinary.uploader.upload(urlElement.path);
-            return { index: indexImage[index] || index + 1, path: currentElement.url };
+            return { index: indexImage ? indexImage[index] : index + 1, path: currentElement.url };
           });
           const result = await Promise.all(urls);
           req.body = { ...req.body, [key]: query.single ? result[0].path : result };
