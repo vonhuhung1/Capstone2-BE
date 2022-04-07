@@ -16,38 +16,24 @@ const uploadCloud = multer({
   },
 });
 
-const assignCloudinary = async (req, res, next) => {
-  try {
-    const { files, body, query } = req;
-    if (files) {
-      const indexImage = (query.imageIndex && query.imageIndex.split(',')) || null;
-      const numberFiles = Object.keys(body).length + Object.keys(files).length;
-      if (req.method === 'POST' || files.image.length === indexImage.length) {
-        Object.keys(files).map(async (key) => {
-          const urls = files[key].map(async (urlElement, index) => {
-            const currentElement = await cloudinary.uploader.upload(urlElement.path);
-            return { index: indexImage ? indexImage[index] : index + 1, path: currentElement.url };
-          });
-          const result = await Promise.all(urls);
-          req.body = { ...req.body, [key]: query.single ? result[0].path : result };
-          if (numberFiles === Object.keys(req.body).length) {
-            next();
-          }
-        });
-      } else {
-        res.status(httpStatus.BAD_REQUEST).send({
-          code: httpStatus.BAD_REQUEST,
-          message: 'File is update same index image ',
-        });
-      }
-    } else {
-      if (req.method === 'PATCH') return next();
-      res.status(httpStatus.BAD_REQUEST).send({
-        code: httpStatus.BAD_REQUEST,
-        message: 'File is empty(min a field)',
-      });
-    }
-  } catch (error) {
+const getUrls = (files, key) => {
+  return files[key].map(
+    async (urlElement) => await cloudinary.uploader.upload(urlElement.path)  
+  );
+}
+
+const assignCloudinary = async ( req, res, next) => {
+  const { files, body, method } = req;
+  const maxKey = Object.keys(files).length;
+  try { 
+      maxKey > 0 && method === 'POST' && Object.keys(files).map(
+        async (key, index) => {
+          const result = await Promise.all(getUrls(files, key));
+          req.body = { ...body, [key]: result[index].url};
+          index === maxKey - 1 && next();
+        }
+      )
+  } catch {
     res.status(httpStatus.UNAUTHORIZED).send({
       code: httpStatus.UNAUTHORIZED,
       message: 'Please choose image jpe|jpeg|png|gif',
