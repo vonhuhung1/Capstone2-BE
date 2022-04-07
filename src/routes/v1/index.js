@@ -1,9 +1,7 @@
 const express = require('express');
 const authRoute = require('./auth.route');
 const userRoute = require('./user.route');
-const eventRoute = require('./event.route');
 const postRoute = require('./post.route');
-const giveRoute = require('./give.route');
 const docsRoute = require('./docs.route');
 const replyRoute = require('./reply.route');
 const commentRoute = require('./comment.route');
@@ -23,16 +21,8 @@ const defaultRoutes = [
     route: userRoute,
   },
   {
-    path: '/events',
-    route: eventRoute,
-  },
-  {
     path: '/posts',
     route: postRoute,
-  },
-  {
-    path: '/gives',
-    route: giveRoute,
   },
   {
     path: '/comments',
