@@ -29,11 +29,13 @@ const assignCloudinary = async ( req, res, next) => {
       maxKey > 0 && method === 'POST' && Object.keys(files).map(
         async (key, index) => {
           const result = await Promise.all(getUrls(files, key));
+          if(result[index] !== undefined){
           req.body = { ...body, [key]: result[index].url};
+          }
           index === maxKey - 1 && next();
         }
       )
-  } catch {
+  } catch{
     res.status(httpStatus.UNAUTHORIZED).send({
       code: httpStatus.UNAUTHORIZED,
       message: 'Please choose image jpe|jpeg|png|gif',

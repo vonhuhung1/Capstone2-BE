@@ -12,7 +12,7 @@ const register = {
     lng: Joi.string().min(0).max(150),
     location: Joi.string().min(0).max(150),
     phoneNumber: Joi.string().min(0).max(15).required(),
-    frontCard: Joi.string().min(0).max(150),
+    frontCard: Joi.string().min(0).max(150).required(),
     backCard: Joi.string().min(0).max(150),
     avatar: Joi.string().min(0).max(150),
     agree: Joi.boolean().required(),
