@@ -23,16 +23,16 @@ const getUrls = (files, key) => {
 }
 
 const assignCloudinary = async ( req, res, next) => {
+  let flag = 0;
   const { files, body, method } = req;
   const maxKey = Object.keys(files).length;
   try { 
-      maxKey > 0 && method === 'POST' && Object.keys(files).map(
+      maxKey > 0 && method === 'POST' && Object.keys(files).forEach(
         async (key, index) => {
           const result = await Promise.all(getUrls(files, key));
-          if(result[index] !== undefined){
-          req.body = { ...body, [key]: result[index].url};
-          }
-          index === maxKey - 1 && next();
+          req.body[key] = result[0].url;
+        flag === maxKey - 1  &&next();
+          ++flag
         }
       )
   } catch{
