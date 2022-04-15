@@ -10,8 +10,8 @@ const createPost = {
     address: Joi.string().min(0).max(100).required(),
     authorId: Joi.string().custom(objectId).required(),
     comment: Joi.string().custom(objectId),
-    image: Joi.array().required(),
-    userId: Joi.array().required(),
+    image: Joi.string().min(0).max(150).required(),
+    userId: Joi.string().min(0).max(150).required(),
     quantity: Joi.number().required(),
   }),
 };
