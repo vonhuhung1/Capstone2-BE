@@ -15,7 +15,7 @@ const postSchema = mongoose.Schema(
       required: true,
       trim: true,
       minLength: 0,
-      maxLength: 200,
+      maxLength: 1000,
     },
     status: {
       type: Boolean,

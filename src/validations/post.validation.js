@@ -5,9 +5,9 @@ const { objectId } = require('./custom.validation');
 const createPost = {
   body: Joi.object().keys({
     title: Joi.string().min(0).max(50).required(),
-    content: Joi.string().min(0).max(250).required(),
+    content: Joi.string().min(0).max(10000).required(),
     status: Joi.boolean().required(),
-    address: Joi.string().min(0).max(100).required(),
+    address: Joi.string().min(0).max(200).required(),
     authorId: Joi.string().custom(objectId).required(),
     comment: Joi.string().custom(objectId),
     image: Joi.string().min(0).max(150).required(),
