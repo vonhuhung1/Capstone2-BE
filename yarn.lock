@@ -5037,7 +5037,7 @@
   "resolved" "https://registry.npmjs.org/module-details-from-path/-/module-details-from-path-1.0.3.tgz"
   "version" "1.0.3"
 
-"moment-timezone@^0.5.x":
+"moment-timezone@^0.5.31", "moment-timezone@^0.5.x":
   "integrity" "sha512-PTc2vcT8K9J5/9rDEPe5czSIKgLoGsH8UNpA4qZTVw0Vd/Uz19geE9abbIOQKaAQFcnQ3v5YEXrbSc5BpshH+w=="
   "resolved" "https://registry.npmjs.org/moment-timezone/-/moment-timezone-0.5.33.tgz"
   "version" "0.5.33"
@@ -5197,6 +5197,13 @@
   "integrity" "sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ=="
   "resolved" "https://registry.npmjs.org/nice-try/-/nice-try-1.0.5.tgz"
   "version" "1.0.5"
+
+"node-cron@^3.0.0":
+  "integrity" "sha512-DDwIvvuCwrNiaU7HEivFDULcaQualDv7KoNlB/UU1wPW0n1tDEmBJKhEIE6DlF2FuoOHcNbLJ8ITL2Iv/3AWmA=="
+  "resolved" "https://registry.npmjs.org/node-cron/-/node-cron-3.0.0.tgz"
+  "version" "3.0.0"
+  dependencies:
+    "moment-timezone" "^0.5.31"
 
 "node-int64@^0.4.0":
   "integrity" "sha1-h6kGXNs1XTGC2PlM4RGIuCXGijs="

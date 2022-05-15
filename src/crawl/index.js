@@ -20,7 +20,7 @@ const Promise2 = async (arr) => {
       const image = $(e).attr('src');
       obj = { ...element, ...obj, image };
     });
-    console.log(obj);
+    // console.log(obj);
     CronJob.create(obj);
   });
 };

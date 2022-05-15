@@ -7,6 +7,7 @@ const replyRoute = require('./reply.route');
 const commentRoute = require('./comment.route');
 const analysisRoute = require('./analysis.route');
 const locationRoute = require('./location.route');
+const crawlRoute = require('./cronJob.route');
 const config = require('../../config/config');
 
 const router = express.Router();
@@ -19,6 +20,10 @@ const defaultRoutes = [
   {
     path: '/users',
     route: userRoute,
+  },
+  {
+    path: '/crawls',
+    route: crawlRoute,
   },
   {
     path: '/posts',
