@@ -10,13 +10,12 @@ const router = express.Router();
 router
   .route('/')
   .post(
-    auth('user'),
     uploadCloud.fields([{ name: 'image', maxCount: 5 }]),
     assignCloudinary,
     validate(postValidation.createPost),
     postController.createPost
   )
-  .get(auth('user'), validate(postValidation.getPosts), postController.getPosts);
+  .get(validate(postValidation.getPosts), postController.getPosts);
 
 router
   .route('/:postId')

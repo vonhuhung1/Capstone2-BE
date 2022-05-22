@@ -4,15 +4,16 @@ const { objectId } = require('./custom.validation');
 // to do fix validation field create
 const createPost = {
   body: Joi.object().keys({
-    title: Joi.string().min(0).max(50).required(),
-    content: Joi.string().min(0).max(10000).required(),
+    title: Joi.string().min(0).max(1000).required(),
+    content: Joi.string().min(0).max(20000).required(),
+    slug: Joi.string().min(0).max(5000).required(),
     status: Joi.boolean().required(),
-    address: Joi.string().min(0).max(200).required(),
-    authorId: Joi.string().custom(objectId).required(),
+    address: Joi.string().min(0).max(200),
+    authorId: Joi.string().custom(objectId),
     comment: Joi.string().custom(objectId),
     image: Joi.string().min(0).max(150).required(),
-    userId: Joi.string().min(0).max(150).required(),
-    quantity: Joi.number().required(),
+    userId: Joi.string().min(0).max(150),
+    quantity: Joi.number(),
   }),
 };
 

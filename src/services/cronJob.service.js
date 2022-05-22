@@ -15,4 +15,8 @@ const queryCronJob = async (filter, options) => {
   return cronJob;
 };
 
-module.exports = { queryCronJob };
+const getCronJobById = async (id) => {
+  return CronJob.findById(id);
+};
+
+module.exports = { queryCronJob, getCronJobById };

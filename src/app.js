@@ -23,7 +23,7 @@ const app = express();
 const cronJob = cron.schedule('*/10 * * * * *', function () {
   crawl();
   // eslint-disable-next-line no-console
-  console.log('running a task every minute');
+  // console.log('running a task every minute');
 });
 
 cronJob.start();

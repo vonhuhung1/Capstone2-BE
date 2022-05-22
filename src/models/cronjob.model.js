@@ -26,7 +26,6 @@ const cronjobSchema = mongoose.Schema(
     },
     image: {
       type: String,
-      required: true,
       trim: true,
       minLength: 0,
       maxLength: 200,

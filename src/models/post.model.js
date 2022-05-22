@@ -8,14 +8,14 @@ const postSchema = mongoose.Schema(
       required: true,
       trim: true,
       minLength: 0,
-      maxLength: 20,
+      maxLength: 1000,
     },
     content: {
       type: String,
       required: true,
       trim: true,
       minLength: 0,
-      maxLength: 1000,
+      maxLength: 20000,
     },
     status: {
       type: Boolean,
@@ -23,7 +23,6 @@ const postSchema = mongoose.Schema(
     },
     address: {
       type: String,
-      required: true,
       trim: true,
       minLength: 0,
       maxLength: 200,
@@ -34,6 +33,13 @@ const postSchema = mongoose.Schema(
       trim: true,
       minlength: 0,
       maxLength: 150,
+    },
+    slub: {
+      type: String,
+      required: true,
+      trim: true,
+      minLength: 0,
+      maxLength: 5000,
     },
     quantity: {
       type: Number,
