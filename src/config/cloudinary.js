@@ -17,25 +17,28 @@ const uploadCloud = multer({
 });
 
 const getUrls = (files, key) => {
-  return files[key].map(
-    async (urlElement) => await cloudinary.uploader.upload(urlElement.path)  
-  );
-}
+  // eslint-disable-next-line no-return-await
+  return files[key].map(async (urlElement) => await cloudinary.uploader.upload(urlElement.path));
+};
 
-const assignCloudinary = async ( req, res, next) => {
+const assignCloudinary = async (req, res, next) => {
   let flag = 0;
-  const { files, body, method } = req;
+  const { files, method } = req;
   const maxKey = Object.keys(files).length;
-  try { 
-      maxKey > 0 && method === 'POST' && Object.keys(files).forEach(
-        async (key, index) => {
-          const result = await Promise.all(getUrls(files, key));
-          req.body[key] = result[0].url;
-        flag === maxKey - 1  &&next();
-          ++flag
-        }
-      )
-  } catch{
+  try {
+    if (maxKey > 0 && method === 'POST') {
+      Object.keys(files).forEach(async (key) => {
+        const result = await Promise.all(getUrls(files, key));
+        req.body[key] = result[0].url;
+        // eslint-disable-next-line no-unused-expressions
+        flag === maxKey - 1 && next();
+        // eslint-disable-next-line no-plusplus
+        ++flag;
+      });
+    } else {
+      next();
+    }
+  } catch (err) {
     res.status(httpStatus.UNAUTHORIZED).send({
       code: httpStatus.UNAUTHORIZED,
       message: 'Please choose image jpe|jpeg|png|gif',

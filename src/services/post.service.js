@@ -51,6 +51,7 @@ const updatePostById = async (postId, updateBody) => {
   if (!post) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Post not found');
   }
+  console.log(updateBody);
   if (updateBody.image) {
     updateBody.image.forEach((element) => {
       const index = post.image.findIndex((image) => Number(image.index) === Number(element.index));

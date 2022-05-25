@@ -43,7 +43,7 @@ const updatePost = {
       title: Joi.string().min(0).max(50),
       content: Joi.string().min(0).max(250),
       status: Joi.boolean(),
-      category: Joi.string().min(0).max(200).required(),
+      category: Joi.string().min(0).max(200),
       address: Joi.string().min(0).max(100),
       authorId: Joi.string().custom(objectId),
       comment: Joi.string().custom(objectId),
