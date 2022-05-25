@@ -11,7 +11,7 @@ const register = {
     lat: Joi.string().min(0).max(150),
     lng: Joi.string().min(0).max(150),
     location: Joi.string().min(0).max(150),
-    phoneNumber: Joi.string().min(0).max(15).required(),
+    phoneNumber: Joi.string().min(0).max(15),
     frontCard: Joi.string().min(0).max(150),
     backCard: Joi.string().min(0).max(150),
     avatar: Joi.string().min(0).max(150),

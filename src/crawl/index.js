@@ -5,7 +5,7 @@ const cheerio = require('cheerio');
 require('dotenv').config();
 const CronJob = require('../models/cronjob.model');
 
-const web = 'https://tuoitre.vn';
+const web = 'https://tuoitre.vn/';
 
 const Promise2 = async (arr) => {
   arr.forEach(async (element, index) => {
@@ -13,7 +13,7 @@ const Promise2 = async (arr) => {
     const res = await axios.get(`${web}${element.href}`);
     const $ = cheerio.load(res.data);
     $('.main-content-body #main-detail-body').each((i, e) => {
-      const content = $(e).find('#main-detail-body p').text();
+      const content = $(e).find('#main-detail-body p').text().replace(/\s\s+/g, '');
       obj = { ...element, ...obj, content };
     });
     $('.VCSortableInPreviewMode a img').each((i, e) => {

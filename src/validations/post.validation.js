@@ -6,7 +6,7 @@ const createPost = {
   body: Joi.object().keys({
     title: Joi.string().min(0).max(1000).required(),
     content: Joi.string().min(0).max(20000).required(),
-    slug: Joi.string().min(0).max(5000).required(),
+    category: Joi.string().min(0).max(200).required(),
     status: Joi.boolean().required(),
     address: Joi.string().min(0).max(200),
     authorId: Joi.string().custom(objectId),
@@ -43,10 +43,11 @@ const updatePost = {
       title: Joi.string().min(0).max(50),
       content: Joi.string().min(0).max(250),
       status: Joi.boolean(),
+      category: Joi.string().min(0).max(200).required(),
       address: Joi.string().min(0).max(100),
       authorId: Joi.string().custom(objectId),
       comment: Joi.string().custom(objectId),
-      image: Joi.array(),
+      image: Joi.string().min(0).max(150),
       userId: Joi.array(),
       quantity: Joi.number(),
     })

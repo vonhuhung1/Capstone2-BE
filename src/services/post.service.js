@@ -26,6 +26,10 @@ const queryPost = async (filter, options) => {
   return posts;
 };
 
+// const getPostByCatelory = async (category) => {
+//   return Post.find(category);
+// };
+
 /**
  * Get post by id
  * @param {ObjectId} id
@@ -83,4 +87,5 @@ module.exports = {
   getPostById,
   updatePostById,
   deletePostById,
+  // getPostByCatelory,
 };

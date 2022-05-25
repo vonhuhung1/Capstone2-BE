@@ -34,12 +34,12 @@ const postSchema = mongoose.Schema(
       minlength: 0,
       maxLength: 150,
     },
-    slub: {
+    category: {
       type: String,
       required: true,
       trim: true,
       minLength: 0,
-      maxLength: 5000,
+      maxLength: 200,
     },
     quantity: {
       type: Number,

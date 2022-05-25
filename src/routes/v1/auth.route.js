@@ -2,22 +2,12 @@ const express = require('express');
 const validate = require('../../middlewares/validate');
 const authValidation = require('../../validations/auth.validation');
 const authController = require('../../controllers/auth.controller');
-const { uploadCloud, assignCloudinary } = require('../../config/cloudinary');
 // const auth = require('../../middlewares/auth');
 
 const router = express.Router();
 
-router.post(
-  '/register',
-  uploadCloud.fields([
-    { name: 'frontCard', maxCount: 1 },
-    { name: 'backCard', maxCount: 1 },
-    { name: 'avatar', maxCount: 1 },
-  ]),
-  assignCloudinary,
-  validate(authValidation.register),
-  authController.register
-);
+router.post('/register', validate(authValidation.register), authController.register);
+
 router.post('/login', validate(authValidation.login), authController.login);
 // router.post('/login-google', validate(authValidation.login), authController.loginGoogle);
 // router.post('/login-meta', validate(authValidation.login), authController.loginMeta);

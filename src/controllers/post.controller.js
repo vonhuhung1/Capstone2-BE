@@ -16,6 +16,13 @@ const getPosts = catchAsync(async (req, res) => {
   res.status(httpStatus.OK).send(result);
 });
 
+const getPostByCatelory = catchAsync(async (req, res) => {
+  const allPost = [];
+  const post = await postService.getPostByCatelory(req.params.category);
+  post.push(allPost);
+  res.status(httpStatus.OK).send(allPost);
+});
+
 const getPost = catchAsync(async (req, res) => {
   const post = await postService.getPostById(req.params.postId);
   if (!post) {
@@ -40,4 +47,5 @@ module.exports = {
   getPost,
   updatePost,
   deletePost,
+  getPostByCatelory,
 };

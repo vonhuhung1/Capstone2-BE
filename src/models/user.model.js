@@ -65,28 +65,24 @@ const userSchema = mongoose.Schema(
     },
     phoneNumber: {
       type: String,
-      require: true,
       trim: true,
       minlength: 0,
       maxLength: 15,
     },
     frontCard: {
       type: String,
-      require: true,
       trim: true,
       minlength: 0,
       maxLength: 150,
     },
     backCard: {
       type: String,
-      require: true,
       trim: true,
       minlength: 0,
       maxLength: 150,
     },
     avatar: {
       type: String,
-      require: true,
       trim: true,
       minlength: 0,
       maxLength: 150,

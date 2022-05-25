@@ -7,7 +7,7 @@ const cors = require('cors');
 const passport = require('passport');
 const httpStatus = require('http-status');
 const path = require('path');
-const cron = require('node-cron');
+// const cron = require('node-cron');
 const config = require('./config/config');
 const morgan = require('./config/morgan');
 const { jwtStrategy } = require('./config/passport');
@@ -15,18 +15,18 @@ const { authLimiter } = require('./middlewares/rateLimiter');
 const routes = require('./routes/v1');
 const publicRoutes = require('./routes/publicRoute');
 const { errorConverter, errorHandler } = require('./middlewares/error');
-const crawl = require('./crawl');
+// const crawl = require('./crawl');
 const ApiError = require('./utils/ApiError');
 
 const app = express();
 
-const cronJob = cron.schedule('*/10 * * * * *', function () {
-  crawl();
-  // eslint-disable-next-line no-console
-  // console.log('running a task every minute');
-});
+// const cronJob = cron.schedule('*/10 * * * * *', function () {
+//   crawl();
+//   // eslint-disable-next-line no-console
+//   console.log('running a task every minute');
+// });
 
-cronJob.start();
+// cronJob.start();
 
 if (config.env !== 'test') {
   app.use(morgan.successHandler);
