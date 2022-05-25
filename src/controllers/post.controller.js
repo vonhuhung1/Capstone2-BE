@@ -16,12 +16,12 @@ const getPosts = catchAsync(async (req, res) => {
   res.status(httpStatus.OK).send(result);
 });
 
-// const getPostByCatelory = catchAsync(async (req, res) => {
-//   const allPost = [];
-//   const post = await postService.getPostByCatelory(req.params.category);
-//   post.push(allPost);
-//   res.status(httpStatus.OK).send(allPost);
-// });
+const getPostByCategory = catchAsync(async (req, res) => {
+  const filter = pick(req.query, ['category', 'role']);
+  const options = pick(req.query, ['sortBy', 'limit', 'page']);
+  const result = await postService.getPostByCategory(filter, options);
+  res.status(httpStatus.OK).send(result);
+});
 
 const getPost = catchAsync(async (req, res) => {
   const post = await postService.getPostById(req.params.postId);
@@ -47,5 +47,5 @@ module.exports = {
   getPost,
   updatePost,
   deletePost,
-  // getPostByCatelory,
+  getPostByCategory,
 };

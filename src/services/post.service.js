@@ -13,7 +13,7 @@ const createPost = async (userBody) => {
 
 /**
  * Query for posts
- * @param {Object} filter - Mongo filter
+ * @param {any} param - Mongo filter
  * @param {Object} options - Query options
  * @param {string} [options.sortBy] - Sort option in the format: sortField:(desc|asc)
  * @param {number} [options.limit] - Maximum number of results per page (default = 10)
@@ -26,9 +26,10 @@ const queryPost = async (filter, options) => {
   return posts;
 };
 
-// const getPostByCatelory = async (category) => {
-//   return Post.find(category);
-// };
+const getPostByCategory = async (filter, options) => {
+  const posts = await Post.paginate(filter, options);
+  return posts;
+};
 
 /**
  * Get post by id
@@ -87,5 +88,5 @@ module.exports = {
   getPostById,
   updatePostById,
   deletePostById,
-  // getPostByCatelory,
+  getPostByCategory,
 };
